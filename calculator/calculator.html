@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор зарплаты</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles 1.css">
+</head>
+<body>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="#">Калькулятор</a>
+        <a href="result.html">Результаты</a>
+    </nav>
+    
+    <div class="container">
+        <h2>Калькулятор заработной платы</h2>
+        <div class="form-group">
+            <label>ФИО:</label>
+            <input type="text" id="fio">
+        </div>
+        <div class="form-group">
+            <label>Должность:</label>
+            <input type="text" id="position">
+        </div>
+        <div class="form-group">
+            <label>Оклад (в месяц):</label>
+            <input type="number" id="salary">
+        </div>
+        <div class="form-group">
+            <label>Отработано дней:</label>
+            <input type="number" id="days">
+        </div>
+        <div class="form-group">
+            <label>Премия:</label>
+            <input type="number" id="bonus">
+        </div>
+        <button onclick="calculateSalary()">Рассчитать</button>
+        <div class="result" id="previewResult">Результат появится здесь</div>
+        <button onclick="saveResult()" style="display:none;" id="saveButton">Сохранить результат</button>
+    </div>
+    
+    <div class="instructions">
+        <h3>Инструкция по использованию калькулятора</h3>
+        <p><strong>Шаг 1.</strong> Введите в строку ФИО сотрудника, его должность.</p>
+        <p><strong>Шаг 2.</strong> Введите в поля сумму оклада и количество фактически отработанных дней. Укажите сумму премии за отработанный период.</p>
+        <p><strong>Шаг 3.</strong> Нажмите кнопку для расчета и смотрите суммы:</p>
+        <ul>
+            <li><strong>«Зарплата за вычетом НДФЛ»</strong> — это деньги, которые сотрудник получит на руки;</li>
+            <li><strong>«Начисленная сумма зарплаты»</strong> — это сумма до вычета подоходного налога;</li>
+            <li><strong>«Сумма налога НДФЛ»</strong> — это подоходный налог, рассчитанный по ставке 13%.</li>
+        </ul>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+

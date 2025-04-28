@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Результаты</title>
+    <link rel="stylesheet" href="styles 1.css">
+<body>
+    <nav>
+        <a href="index.html">Главная</a>
+        <a href="calculator.html">Калькулятор</a>
+        <a href="result.html">Результаты</a>
+    </nav>
+
+    <div class="container">
+        <h2>Сохраненные результаты</h2>
+        <div id="printSection">
+            <table id="resultsTable">
+                <thead>
+                    <tr>
+                        <th>ФИО</th>
+                        <th>Должность</th>
+                        <th>Начисленная сумма</th>
+                        <th>НДФЛ</th>
+                        <th>Зарплата на руки</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Данные будут вставляться сюда -->
+                </tbody>
+            </table>
+        </div>
+        <button onclick="printResults()">🖨️ Распечатать таблицу</button>
+        <button onclick="clearResults()">🗑️ Очистить результаты</button>
+    </div>
+
+    <script>
+        function loadResults() {
+            let results = JSON.parse(localStorage.getItem("salaryResults")) || [];
+            let tableBody = document.querySelector("#resultsTable tbody");
+            tableBody.innerHTML = "";
+
+            results.forEach(result => {
+                let row = `<tr>
+                    <td>${result.fio}</td>
+                    <td>${result.position}</td>
+                    <td>${result.total} ₽</td>
+                    <td>${result.tax} ₽</td>
+                    <td>${result.finalSalary} ₽</td>
+                </tr>`;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function clearResults() {
+            localStorage.removeItem("salaryResults");
+            loadResults();
+        }
+
+        function printResults() {
+            window.print();
+        }
+
+        window.onload = loadResults;
+    </script>
+</body>
+</html>
